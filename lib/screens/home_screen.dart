@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:preference_app/share_preferences/preferences.dart';
+import 'package:preference_app/widgets/side_menu.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routerName = "Home";
@@ -11,17 +13,18 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Home'),
         centerTitle: true,
       ),
+      drawer: const SideMenu(),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Center(
-            child: Container(
-              height: 200,
-              color: Colors.amber,
-            ),
-          ),
-        ),
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('DarkMode: ${Preferences.isDarkMode}'),
+          Divider(),
+          Text('Genero: ${Preferences.gender}'),
+          Divider(),
+          Text('Nombre del usuario:${Preferences.name}')
+        ],
+      )),
     );
   }
 }
